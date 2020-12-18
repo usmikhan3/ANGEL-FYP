@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:pizzato/helpers/footer.dart';
 import 'package:pizzato/helpers/headers.dart';
 import 'package:pizzato/helpers/middle.dart';
+import 'package:pizzato/providers/authentication.dart';
+import 'package:pizzato/providers/calculations.dart';
 import 'package:pizzato/screens/splash_screen.dart';
 import 'package:pizzato/services/manageData.dart';
+import 'package:pizzato/services/manageMaps.dart';
 import 'package:provider/provider.dart';
 
 void main() async{
@@ -22,12 +25,16 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: Headers()),
         ChangeNotifierProvider.value(value: MiddleHelpers()),
         ChangeNotifierProvider.value(value: ManageData()),
-        ChangeNotifierProvider.value(value: Footers())
+        ChangeNotifierProvider.value(value: Footers()),
+        ChangeNotifierProvider.value(value: GenerateMaps()),
+        ChangeNotifierProvider.value(value: Authentication()),
+        ChangeNotifierProvider.value(value: Calculations())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Pizzato',
         theme: ThemeData(
+          //fontFamily: 'Figno',
           primarySwatch: Colors.red,
           primaryColor: Colors.redAccent,
           visualDensity: VisualDensity.adaptivePlatformDensity,

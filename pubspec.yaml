@@ -30,6 +30,7 @@ dependencies:
   lottie:
   firebase:
   cloud_firestore:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
@@ -39,6 +40,14 @@ dev_dependencies:
 
 
 flutter:
+
+  fonts:
+    - family: Kanetin
+      fonts:
+        - asset: fonts/kanetin.otf
+    - family: Figno
+      fonts:
+        - asset: fonts/figno.otf
 
 
   uses-material-design: true

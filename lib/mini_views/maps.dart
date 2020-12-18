@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:pizzato/screens/cart_screen.dart';
+import 'package:pizzato/services/manageData.dart';
+import 'package:pizzato/services/manageMaps.dart';
+import 'package:provider/provider.dart';
+
+
+class Maps extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Provider
+                .of<GenerateMaps>(context, listen: false)
+                .fetchMaps(),
+            Positioned(
+              top:40,
+                child: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black,
+              ),
+              onPressed: (){
+                Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                        child: CartScreen(),
+                        type: PageTransitionType.fade));
+              },
+            )
+            )
+          ],
+
+        ),
+      ),
+    );
+  }
+}

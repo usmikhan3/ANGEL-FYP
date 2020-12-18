@@ -91,7 +91,7 @@ class MiddleHelpers extends ChangeNotifier {
                               Positioned(
                                   left: 140.0,
                                   child: IconButton(
-                                    icon: Icon(EvaIcons.heart),
+                                    icon: Icon(EvaIcons.heart, color: Colors.red,),
                                     onPressed: () {},
                                   ))
                             ],
@@ -243,7 +243,7 @@ class MiddleHelpers extends ChangeNotifier {
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,
-                                        fontSize: 26.0),
+                                        fontSize: 22.0),
                                   ),
                                   Text(
                                     snapshot.data[index].data()['category'],
@@ -281,7 +281,7 @@ class MiddleHelpers extends ChangeNotifier {
                             ),
                             SizedBox(
                               height: 300,
-                              width: 150,
+                              width: 140,
                               child: Image.network(
                                   snapshot.data[index].data()['image'], fit: BoxFit.fitWidth,),
                             )

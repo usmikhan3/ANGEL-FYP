@@ -1,6 +1,11 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:pizzato/screens/login_screen.dart';
+import 'package:pizzato/services/manageMaps.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Headers extends ChangeNotifier{
 
@@ -10,13 +15,22 @@ class Headers extends ChangeNotifier{
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          IconButton(icon: Icon(FontAwesomeIcons.userAlt), onPressed: (){}),
+          IconButton(icon: Icon(EvaIcons.logOutOutline), onPressed: ()async{
+            SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+            sharedPreferences.remove('uid');
+            Navigator.pushReplacement(context, PageTransition
+              (child: LoginScreen(),
+                type: PageTransitionType.leftToRightWithFade));
+          }),
           Row(
             children: [
-              Icon(FontAwesomeIcons.locationArrow),
-              Text("Saadi Town", style: TextStyle(
-                color: Colors.grey.shade600, fontSize: 12.0,fontWeight: FontWeight.w600
-              ),
+              Icon(FontAwesomeIcons.locationArrow, size: 14.0,),
+              Container(
+                constraints: BoxConstraints(maxWidth: 250.0),
+                child: Text(finalAddress, style: TextStyle(
+                  color: Colors.grey.shade600, fontSize: 12.0,fontWeight: FontWeight.w600
+                ),
+                ),
               ),
               IconButton(icon: Icon(FontAwesomeIcons.search, color: Colors.black,), onPressed: (){}),
             ],
