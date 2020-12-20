@@ -1,6 +1,6 @@
 # pizzato
 
-A new Flutter application.
+A Food Delivery app.
 
 ## Getting Started
 
