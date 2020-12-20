@@ -10,6 +10,8 @@ import 'package:pizzato/services/manageData.dart';
 import 'package:pizzato/services/manageMaps.dart';
 import 'package:provider/provider.dart';
 
+import 'helpers/size_config.dart';
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
@@ -30,16 +32,26 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: Authentication()),
         ChangeNotifierProvider.value(value: Calculations())
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Pizzato',
-        theme: ThemeData(
-          //fontFamily: 'Figno',
-          primarySwatch: Colors.red,
-          primaryColor: Colors.redAccent,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: SplashScreen()
+      child: LayoutBuilder(
+        builder: (context, constraints){
+          return OrientationBuilder(
+            builder: (context, orientation){
+              SizeConfig().init(constraints, orientation);
+              return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  title: 'Pizzato',
+                  theme: ThemeData(
+                    //fontFamily: 'Figno',
+                    primarySwatch: Colors.red,
+                    primaryColor: Colors.redAccent,
+                    //visualDensity: VisualDensity.adaptivePlatformDensity,
+                  ),
+                  home: SplashScreen()
+              );
+            },
+          );
+
+        },
       ),
     );
   }

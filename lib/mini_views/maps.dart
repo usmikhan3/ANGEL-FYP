@@ -17,7 +17,17 @@ class Maps extends StatelessWidget {
                 .of<GenerateMaps>(context, listen: false)
                 .fetchMaps(),
             Positioned(
-              top:40,
+                top:720,
+                left: 50,
+                child: Container(
+                  color: Colors.white,
+                  height: 80.0,
+                  width: 300,
+                  child: Text(Provider.of<GenerateMaps>(context,listen: true).getMainAddress),
+                )
+            ),
+            Positioned(
+              top:50,
                 child: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios,

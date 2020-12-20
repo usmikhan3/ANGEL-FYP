@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:pizzato/helpers/size_config.dart';
 import 'package:pizzato/providers/authentication.dart';
 import 'package:pizzato/screens/home_screen.dart';
 import 'package:provider/provider.dart';
@@ -21,25 +23,30 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+          Container(
+            height: 38.86010 * SizeConfig.heightMultiplier,
+            width: 83.3333333 * SizeConfig.widthMultiplier,
+            child: Lottie.asset("animations/shoppingbag.json"),
+          ),
               RichText(
                   text: TextSpan(
-                      text: 'Piz',
+                      text: 'An',
                       style: TextStyle(
-                          fontSize: 56,
+                          fontSize: 7.2538860 * SizeConfig.textMultiplier,
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
                       children: <TextSpan>[
                     TextSpan(
-                      text: 'z',
+                      text: 'g',
                       style: TextStyle(
-                          fontSize: 56,
+                          fontSize: 7.2538860 * SizeConfig.textMultiplier,
                           fontWeight: FontWeight.bold,
                           color: Colors.red),
                     ),
                     TextSpan(
-                      text: 'ato',
+                      text: 'el',
                       style: TextStyle(
-                          fontSize: 56,
+                          fontSize: 7.2538860 * SizeConfig.textMultiplier,
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
                     )
@@ -121,13 +128,13 @@ class LoginScreen extends StatelessWidget {
                               .loginIntoAccount(
                                   emailController.text, passwordController.text)
                               .whenComplete(() {
-                        if(Provider.of<Authentication>(context, listen: false).getErrorMessage !=null){
+                        if(Provider.of<Authentication>(context, listen: false).getErrorMessage ==''){
                           Navigator.pushReplacement(
                               context,
                               PageTransition(
                                   child: HomeScreen(),
                                   type: PageTransitionType.leftToRightWithFade));
-                        }else{
+                        }if(Provider.of<Authentication>(context, listen: false).getErrorMessage !=''){
                           Navigator.pushReplacement(
                               context,
                               PageTransition(

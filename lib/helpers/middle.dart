@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:pizzato/helpers/size_config.dart';
 import 'package:pizzato/screens/detail_screen.dart';
 import 'package:pizzato/services/manageData.dart';
 import 'package:provider/provider.dart';
@@ -13,21 +14,21 @@ class MiddleHelpers extends ChangeNotifier {
   //TODO: FAVOURITE HEADING TEXT
   Widget textFav() {
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: EdgeInsets.only(top: 2.5906735 * SizeConfig.heightMultiplier),
       child: RichText(
         text: TextSpan(
             text: 'Favourite ',
             style: TextStyle(
                 fontWeight: FontWeight.w600,
-                fontSize: 36,
+                fontSize: 4.6632124 * SizeConfig.textMultiplier,
                 color: Colors.black,
                 shadows: [BoxShadow(color: Colors.black, blurRadius: 1)]),
             children: <TextSpan>[
               TextSpan(
-                text: ' dishes??',
+                text: ' top sellers',
                 style: TextStyle(
                     fontWeight: FontWeight.w400,
-                    fontSize: 22.0,
+                    fontSize: 2.8497409 * SizeConfig.textMultiplier,
                     color: Colors.grey,
                     shadows: [BoxShadow(color: Colors.grey, blurRadius: 0)]),
               )
@@ -39,7 +40,7 @@ class MiddleHelpers extends ChangeNotifier {
   //TODO:GETTING DATA FROM PRODUCTS COLLECTTION FORESTORE
   Widget dataFromFav(BuildContext context, String collection) {
     return Container(
-      height: 300.0,
+      height: 40.860103 * SizeConfig.heightMultiplier,
       child: FutureBuilder(
         future: Provider.of<ManageData>(context, listen: false)
             .fetchData(collection),
@@ -64,8 +65,8 @@ class MiddleHelpers extends ChangeNotifier {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      height: 300.0,
-                      width: 200.0,
+                      height: 39.860103 * SizeConfig.heightMultiplier,
+                      width: 53.555555 * SizeConfig.widthMultiplier,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(40.0)),
                           color: Colors.white,
@@ -82,14 +83,14 @@ class MiddleHelpers extends ChangeNotifier {
                           Stack(
                             children: [
                               SizedBox(
-                                height: 180,
+                                height: 23.316062 * SizeConfig.heightMultiplier,
                                 child: Image.network(
                                   snapshot.data[index].data()['image'],
                                   fit: BoxFit.fitWidth,
                                 ),
                               ),
                               Positioned(
-                                  left: 140.0,
+                                  left: 38.88888 * SizeConfig.widthMultiplier,
                                   child: IconButton(
                                     icon: Icon(EvaIcons.heart, color: Colors.red,),
                                     onPressed: () {},
@@ -103,7 +104,7 @@ class MiddleHelpers extends ChangeNotifier {
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black,
-                                  fontSize: 18.0),
+                                  fontSize: 2.33160621 * SizeConfig.textMultiplier),
                             ),
                           ),
                           Padding(
@@ -113,7 +114,7 @@ class MiddleHelpers extends ChangeNotifier {
                               style: TextStyle(
                                   fontWeight: FontWeight.w800,
                                   color: Colors.cyan,
-                                  fontSize: 16.0),
+                                  fontSize: 2.0725388 * SizeConfig.textMultiplier),
                             ),
                           ),
                           Padding(
@@ -132,19 +133,19 @@ class MiddleHelpers extends ChangeNotifier {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w700,
                                           color: Colors.grey,
-                                          fontSize: 16.0),
+                                          fontSize: 2.0725388 * SizeConfig.textMultiplier),
                                     ),
                                   ],
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 50.0),
+                                  padding: EdgeInsets.only(left: 13.8888888 * SizeConfig.widthMultiplier),
                                   child: Row(
                                     children: [
                                       Text("Rs. ",
                                           style: TextStyle(
                                               fontWeight: FontWeight.w700,
                                               color: Colors.black,
-                                              fontSize: 16.0)),
+                                              fontSize: 2.0725388 * SizeConfig.textMultiplier)),
                                       Text(
                                         snapshot.data[index]
                                             .data()['price']
@@ -152,7 +153,7 @@ class MiddleHelpers extends ChangeNotifier {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700,
                                             color: Colors.black,
-                                            fontSize: 16.0),
+                                            fontSize: 2.0725388 * SizeConfig.textMultiplier),
                                       ),
                                     ],
                                   ),
@@ -176,21 +177,21 @@ class MiddleHelpers extends ChangeNotifier {
   //TODO: Business HEADING TEXT
   Widget textBusiness() {
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: EdgeInsets.only(top: 2.590673575 * SizeConfig.heightMultiplier),
       child: RichText(
         text: TextSpan(
-            text: 'Business ',
+            text: 'Discount ',
             style: TextStyle(
                 fontWeight: FontWeight.w600,
-                fontSize: 36,
+                fontSize: 4.66321243 * SizeConfig.textMultiplier,
                 color: Colors.black,
                 shadows: [BoxShadow(color: Colors.black, blurRadius: 1)]),
             children: <TextSpan>[
               TextSpan(
-                text: ' lunch',
+                text: ' upto 50%',
                 style: TextStyle(
                     fontWeight: FontWeight.w400,
-                    fontSize: 22.0,
+                    fontSize: 2.8497409 * SizeConfig.textMultiplier,
                     color: Colors.grey,
                     shadows: [BoxShadow(color: Colors.grey, blurRadius: 0)]),
               )
@@ -202,7 +203,7 @@ class MiddleHelpers extends ChangeNotifier {
   //TODO:GETTING DATA FROM PRODUCTS COLLECTTION FORESTORE
   Widget dataBusiness(BuildContext context, String collection) {
     return Container(
-      height: 400.0,
+      height:45.8134715 * SizeConfig.heightMultiplier,
       child: FutureBuilder(
         future: Provider.of<ManageData>(context, listen: false)
             .fetchData(collection),
@@ -233,7 +234,7 @@ class MiddleHelpers extends ChangeNotifier {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
+                              padding: EdgeInsets.only(left: 2.2222222 * SizeConfig.widthMultiplier),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -243,14 +244,14 @@ class MiddleHelpers extends ChangeNotifier {
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,
-                                        fontSize: 22.0),
+                                        fontSize: 2.84974093 * SizeConfig.textMultiplier),
                                   ),
                                   Text(
                                     snapshot.data[index].data()['category'],
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.cyan,
-                                        fontSize: 22.0),
+                                        fontSize: 2.84974093 * SizeConfig.textMultiplier),
                                   ),
                                   Text(
                                     snapshot.data[index].data()['notPrice'].toString(),
@@ -258,7 +259,7 @@ class MiddleHelpers extends ChangeNotifier {
                                         decoration: TextDecoration.lineThrough,
                                         fontWeight: FontWeight.w500,
                                         color: Colors.cyan,
-                                        fontSize: 18.0),
+                                        fontSize: 2.3316062 * SizeConfig.textMultiplier),
                                   ),
                                   Row(
                                     children: [
@@ -266,13 +267,13 @@ class MiddleHelpers extends ChangeNotifier {
                                           style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               color: Colors.black,
-                                              fontSize: 18.0)),
+                                              fontSize: 2.3316062 * SizeConfig.textMultiplier)),
                                       Text(
                                         snapshot.data[index].data()['price'].toString(),
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black,
-                                            fontSize: 25.0),
+                                            fontSize: 3.23834196 * SizeConfig.textMultiplier),
                                       ),
                                     ],
                                   ),
@@ -280,8 +281,8 @@ class MiddleHelpers extends ChangeNotifier {
                               ),
                             ),
                             SizedBox(
-                              height: 300,
-                              width: 140,
+                              height: 51.81347150 * SizeConfig.heightMultiplier,
+                              width: 35.6666666 * SizeConfig.widthMultiplier,
                               child: Image.network(
                                   snapshot.data[index].data()['image'], fit: BoxFit.fitWidth,),
                             )

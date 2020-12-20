@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Authentication with ChangeNotifier {
-  dynamic errorMessage;
+  dynamic errorMessage = '';
   dynamic get getErrorMessage =>errorMessage;
   String uid;
   String get getUid => uid;

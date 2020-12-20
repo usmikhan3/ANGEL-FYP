@@ -8,6 +8,7 @@ class Calculations with ChangeNotifier {
   int beaconValue = 0;
   int onionValue = 0;
   int cartData = 0;
+  int subTotal = 0;
   String size;
 
   bool isSelected = false;
@@ -21,6 +22,7 @@ class Calculations with ChangeNotifier {
   int get getBeaconValue =>beaconValue;
   int get getOnionValue =>onionValue;
   int get getCartData => cartData;
+  int get getSubTotal => subTotal;
   bool get getSelected =>selected;
   String get getSize =>size;
 
@@ -79,6 +81,9 @@ class Calculations with ChangeNotifier {
     notifyListeners();
   }
 
+
+
+
   addToCart(BuildContext context, dynamic data) async{
     if(smallTapped !=false || mediumTapped !=false || largeTapped !=null){
       cartData++;
@@ -97,6 +102,8 @@ class Calculations with ChangeNotifier {
           });
     }
   }
+
+
 
 
 }
