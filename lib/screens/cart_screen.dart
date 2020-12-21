@@ -8,7 +8,10 @@ import 'package:pizzato/helpers/size_config.dart';
 import 'package:pizzato/mini_views/maps.dart';
 import 'package:pizzato/providers/authentication.dart';
 import 'package:pizzato/providers/calculations.dart';
+<<<<<<< HEAD
 import 'package:pizzato/screens/Payment_type.dart';
+=======
+>>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
 import 'package:pizzato/screens/splash_screen.dart';
 import 'package:pizzato/services/manageData.dart';
 import 'package:pizzato/services/manageMaps.dart';
@@ -67,7 +70,11 @@ class _CartScreenState extends State<CartScreen> {
               ),
               onPressed: () async{
                 Provider.of<ManageData>(context, listen: false).deleteData(context);
+<<<<<<< HEAD
                 Provider.of<Calculations>(context, listen: false).cartData =0;
+=======
+                  Provider.of<Calculations>(context, listen: false).cartData =0;
+>>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
               })
         ],
       ),
@@ -118,6 +125,7 @@ class _CartScreenState extends State<CartScreen> {
                           ],
                           borderRadius: BorderRadius.circular(25)
                       ),
+<<<<<<< HEAD
                       height: 25.90673575 * SizeConfig.heightMultiplier,
                       width: 111.1111111 * SizeConfig.widthMultiplier,
                       child: Row(
@@ -130,6 +138,37 @@ class _CartScreenState extends State<CartScreen> {
                             child: Padding(
                               padding:  EdgeInsets.only(left:2.22222222 * SizeConfig.widthMultiplier),
                               child: Image.network(documentSnapshot.data()['image'],),
+=======
+                    ],
+                    borderRadius: BorderRadius.circular(25)
+                  ),
+                  height: 25.90673575 * SizeConfig.heightMultiplier,
+                  width: 111.1111111 * SizeConfig.widthMultiplier,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+
+                        height: 24.61139896 * SizeConfig.heightMultiplier,
+                        width: 41.66666666 * SizeConfig.widthMultiplier ,
+                        child: Padding(
+                          padding:  EdgeInsets.only(left:2.22222222 * SizeConfig.widthMultiplier),
+                          child: Image.network(documentSnapshot.data()['image'],),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left:2.22222222 * SizeConfig.widthMultiplier),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              documentSnapshot.data()['name'],
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 2.590673575  * SizeConfig.textMultiplier),
+>>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
                             ),
                           ),
                           Padding(
@@ -155,6 +194,7 @@ class _CartScreenState extends State<CartScreen> {
                                 Text(
                                   'Quantity : ${documentSnapshot.data()['quantity'].toString()}',style: TextStyle(
                                   color: Colors.black87,
+<<<<<<< HEAD
                                         fontWeight: FontWeight.bold,
                                         fontSize: 1.8134715 * SizeConfig.textMultiplier)
 
@@ -186,6 +226,31 @@ class _CartScreenState extends State<CartScreen> {
                                   ),),
                                 )
                               ],
+=======
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 1.8134715 * SizeConfig.textMultiplier),
+                            ),
+                            Text(
+                              'Onion: \R\s. ${documentSnapshot.data()['onion'].toString()}',
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 1.8134715 * SizeConfig.textMultiplier),
+                            ),
+                            Text(
+                              'Beacon: \R\s. ${documentSnapshot.data()['beacon'].toString()}',
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 1.8134715 * SizeConfig.textMultiplier),
+                            ),
+                            Text(
+                              'Cheese: \R\s. ${documentSnapshot.data()['cheese'].toString()}',
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 1.8134715 * SizeConfig.textMultiplier),
+>>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
                             ),
                           )
                         ],
@@ -354,7 +419,10 @@ class _CartScreenState extends State<CartScreen> {
             Provider.of<Authentication>(context, listen: false).getUid == null
                 ? print(' we are getting user id: $userUid')
                 : print(Provider.of<Authentication>(context, listen: false).getUid);
+<<<<<<< HEAD
             Navigator.push(context, PageTransition(child: PaymentMethod(), type: PageTransitionType.fade));
+=======
+>>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
           },
           child: Container(
             width: 250,

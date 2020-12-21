@@ -28,7 +28,11 @@ class _SplashScreenState extends State<SplashScreen> {
     getUid().whenComplete(() {
       Timer(
           Duration(seconds: 5),
+<<<<<<< HEAD
               () => Navigator.pushReplacement(
+=======
+          () => Navigator.pushReplacement(
+>>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
               context,
               PageTransition(
                   child: userUid == null ? LoginScreen() : HomeScreen(),
@@ -68,6 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         fontWeight: FontWeight.bold,
                         color: Colors.black),
                     children: <TextSpan>[
+<<<<<<< HEAD
                       TextSpan(
                         text: 'g',
                         style: TextStyle(
@@ -83,6 +88,23 @@ class _SplashScreenState extends State<SplashScreen> {
                             color: Colors.black),
                       )
                     ]))
+=======
+                  TextSpan(
+                    text: 'g',
+                    style: TextStyle(
+                        fontSize: 7.25388601 * SizeConfig.textMultiplier,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
+                  TextSpan(
+                    text: 'el',
+                    style: TextStyle(
+                        fontSize: 7.25388601 * SizeConfig.textMultiplier,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  )
+                ]))
+>>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
           ],
         ),
       ),

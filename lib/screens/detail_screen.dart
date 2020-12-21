@@ -159,11 +159,16 @@ class _DetailScreenState extends State<DetailScreen> {
               width: 111.111111 * SizeConfig.widthMultiplier,
               child: Padding(
                 padding:
+<<<<<<< HEAD
                 EdgeInsets.only(top: 5.1813471 * SizeConfig.heightMultiplier, right: 5.555555 * SizeConfig.widthMultiplier, left: 5.555555 * SizeConfig.widthMultiplier),
+=======
+                     EdgeInsets.only(top: 5.1813471 * SizeConfig.heightMultiplier, right: 5.555555 * SizeConfig.widthMultiplier, left: 5.555555 * SizeConfig.widthMultiplier),
+>>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
                 child: Column(
                   //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   //crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+<<<<<<< HEAD
                     // Text(
                     //   '',
                     //   style: TextStyle(
@@ -227,6 +232,69 @@ class _DetailScreenState extends State<DetailScreen> {
                     //   ],
                     // ),
                     Flexible(child: Text(widget.queryDocumentSnapshot['description'])),
+=======
+                    Text(
+                      'Add more stuff',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 3.1088082 * SizeConfig.textMultiplier,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          "Cheese",
+                          style: TextStyle(
+                              color: Colors.grey.shade500, fontSize: 2.84974093 * SizeConfig.textMultiplier),
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                                icon: Icon(EvaIcons.minus), onPressed: () {
+                                  Provider.of<Calculations>(context, listen: false).minusCheese();
+                            }),
+                            Text(
+                              Provider.of<Calculations>(context, listen: true).getCheeseValue.toString(),
+                              style: TextStyle(
+                                  fontSize: 2.590673575 * SizeConfig.textMultiplier, color: Colors.grey.shade500),
+                            ),
+                            IconButton(
+                                icon: Icon(EvaIcons.plus), onPressed: () {
+                              Provider.of<Calculations>(context, listen: false).addCheese();
+                            }),
+                          ],
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          "Beacon",
+                          style: TextStyle(
+                              color: Colors.grey.shade500, fontSize: 2.84974093 * SizeConfig.textMultiplier),
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                                icon: Icon(EvaIcons.minus), onPressed: () {
+                              Provider.of<Calculations>(context, listen: false).minusBeacon();
+                            }),
+                            Text(
+                              Provider.of<Calculations>(context, listen: true).getBeaconValue.toString(),
+                              style: TextStyle(
+                                  fontSize: 2.59067357512 * SizeConfig.textMultiplier, color: Colors.grey.shade500),
+                            ),
+                            IconButton(
+                                icon: Icon(EvaIcons.plus), onPressed: () {
+                              Provider.of<Calculations>(context, listen: false).addBeacon();
+                            }),
+                          ],
+                        )
+                      ],
+                    ),
+>>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
