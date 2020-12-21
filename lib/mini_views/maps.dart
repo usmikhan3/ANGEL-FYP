@@ -27,11 +27,11 @@ class Maps extends StatelessWidget {
                 )
             ),
             Positioned(
-<<<<<<< HEAD
+
                 top:50,
-=======
-              top:50,
->>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
+
+
+
                 child: IconButton(
                   icon: Icon(
                     Icons.arrow_back_ios,

@@ -39,16 +39,14 @@ class MyApp extends StatelessWidget {
               SizeConfig().init(constraints, orientation);
               return MaterialApp(
                   debugShowCheckedModeBanner: false,
-<<<<<<< HEAD
+
                   title: 'Angel',
                   theme: ThemeData(
                     //canvasColor: Colors.transparent,
                     fontFamily: 'Monteserrat',
-=======
-                  title: 'Pizzato',
-                  theme: ThemeData(
+
                     //fontFamily: 'Figno',
->>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
+
                     primarySwatch: Colors.red,
                     primaryColor: Colors.redAccent,
                     //visualDensity: VisualDensity.adaptivePlatformDensity,

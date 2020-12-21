@@ -23,19 +23,11 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-<<<<<<< HEAD
               Container(
                 height: 38.86010 * SizeConfig.heightMultiplier,
                 width: 83.3333333 * SizeConfig.widthMultiplier,
                 child: Lottie.asset("animations/shoppingbag.json"),
               ),
-=======
-          Container(
-            height: 38.86010 * SizeConfig.heightMultiplier,
-            width: 83.3333333 * SizeConfig.widthMultiplier,
-            child: Lottie.asset("animations/shoppingbag.json"),
-          ),
->>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
               RichText(
                   text: TextSpan(
                       text: 'An',
@@ -44,23 +36,6 @@ class LoginScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
                       children: <TextSpan>[
-<<<<<<< HEAD
-                        TextSpan(
-                          text: 'g',
-                          style: TextStyle(
-                              fontSize: 7.2538860 * SizeConfig.textMultiplier,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red),
-                        ),
-                        TextSpan(
-                          text: 'el',
-                          style: TextStyle(
-                              fontSize: 7.2538860 * SizeConfig.textMultiplier,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        )
-                      ])),
-=======
                     TextSpan(
                       text: 'g',
                       style: TextStyle(
@@ -76,7 +51,6 @@ class LoginScreen extends StatelessWidget {
                           color: Colors.black),
                     )
                   ])),
->>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -118,10 +92,7 @@ class LoginScreen extends StatelessWidget {
           return new Container(
             height: 400.0,
             width: 400.0,
-            decoration: BoxDecoration(
-                color: Colors.red.shade400,
-              borderRadius: BorderRadius.circular(25.0)
-            ),
+            decoration: BoxDecoration(color: Colors.blueGrey.shade700),
             child: Center(
               child: Column(
                 children: [
@@ -155,39 +126,29 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () =>
                           Provider.of<Authentication>(context, listen: false)
                               .loginIntoAccount(
-                              emailController.text, passwordController.text)
+                                  emailController.text, passwordController.text)
                               .whenComplete(() {
-<<<<<<< HEAD
-                            if(Provider.of<Authentication>(context, listen: false).getErrorMessage ==''){
-                              Navigator.pushReplacement(
-                                  context,
-                                  PageTransition(
-                                      child: HomeScreen(),
-                                      type: PageTransitionType.leftToRightWithFade));
-                            }if(Provider.of<Authentication>(context, listen: false).getErrorMessage !=''){
-                              Navigator.pushReplacement(
-                                  context,
-                                  PageTransition(
-                                      child: LoginScreen(),
-                                      type: PageTransitionType.leftToRightWithFade));
-                            }
-                          }),
-=======
-                        if(Provider.of<Authentication>(context, listen: false).getErrorMessage ==''){
+                        if (Provider.of<Authentication>(context, listen: false)
+                                .getErrorMessage ==
+                            '') {
                           Navigator.pushReplacement(
                               context,
                               PageTransition(
                                   child: HomeScreen(),
-                                  type: PageTransitionType.leftToRightWithFade));
-                        }if(Provider.of<Authentication>(context, listen: false).getErrorMessage !=''){
+                                  type:
+                                      PageTransitionType.leftToRightWithFade));
+                        }
+                        if (Provider.of<Authentication>(context, listen: false)
+                                .getErrorMessage !=
+                            '') {
                           Navigator.pushReplacement(
                               context,
                               PageTransition(
                                   child: LoginScreen(),
-                                  type: PageTransitionType.leftToRightWithFade));
+                                  type:
+                                      PageTransitionType.leftToRightWithFade));
                         }
                       }),
->>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
                       child: Text(
                         "Login",
                         style: TextStyle(color: Colors.black),
@@ -214,10 +175,7 @@ class LoginScreen extends StatelessWidget {
           return new Container(
             height: 400.0,
             width: 400.0,
-            decoration: BoxDecoration(
-                color: Colors.red.shade400,
-                borderRadius: BorderRadius.circular(25.0)
-            ),
+            decoration: BoxDecoration(color: Colors.blueGrey.shade700),
             child: Center(
               child: Column(
                 children: [
@@ -251,22 +209,26 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () =>
                           Provider.of<Authentication>(context, listen: false)
                               .createNewAccount(
-                              emailController.text, passwordController.text)
+                                  emailController.text, passwordController.text)
                               .whenComplete(() {
-                            if(Provider.of<Authentication>(context, listen: false).getErrorMessage !=null){
-                              Navigator.pushReplacement(
-                                  context,
-                                  PageTransition(
-                                      child: HomeScreen(),
-                                      type: PageTransitionType.leftToRightWithFade));
-                            }else{
-                              Navigator.pushReplacement(
-                                  context,
-                                  PageTransition(
-                                      child: LoginScreen(),
-                                      type: PageTransitionType.leftToRightWithFade));
-                            }
-                          }),
+                        if (Provider.of<Authentication>(context, listen: false)
+                                .getErrorMessage !=
+                            null) {
+                          Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                  child: HomeScreen(),
+                                  type:
+                                      PageTransitionType.leftToRightWithFade));
+                        } else {
+                          Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                  child: LoginScreen(),
+                                  type:
+                                      PageTransitionType.leftToRightWithFade));
+                        }
+                      }),
                       child: Text(
                         "Sign Up",
                         style: TextStyle(color: Colors.black),

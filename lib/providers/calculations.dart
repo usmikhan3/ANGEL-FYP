@@ -10,10 +10,9 @@ class Calculations with ChangeNotifier {
   int quantity = 0;
   int cartData = 0;
   int subTotal = 0;
-<<<<<<< HEAD
+
   //int quantity = 0;
-=======
->>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
+
   String size;
 
   bool isSelected = false;

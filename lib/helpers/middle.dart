@@ -82,22 +82,15 @@ class MiddleHelpers extends ChangeNotifier {
                         children: [
                           Stack(
                             children: [
-<<<<<<< HEAD
+
                               Center(
                                 child: CircleAvatar(
                                   radius: 100,
                                   backgroundImage: NetworkImage(
                                     snapshot.data[index].data()['image'],
-                                  )
-=======
-                              SizedBox(
-                                height: 23.316062 * SizeConfig.heightMultiplier,
-                                child: Image.network(
-                                  snapshot.data[index].data()['image'],
-                                  fit: BoxFit.fitWidth,
->>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
-                                ),
-                              ),
+                                  )),),
+
+
                               Positioned(
                                   left: 38.88888 * SizeConfig.widthMultiplier,
                                   child: IconButton(
