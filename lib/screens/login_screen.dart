@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:pizzato/helpers/size_config.dart';
 import 'package:pizzato/providers/authentication.dart';
 import 'package:pizzato/screens/home_screen.dart';
 import 'package:provider/provider.dart';
@@ -21,29 +23,34 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Container(
+                height: 38.86010 * SizeConfig.heightMultiplier,
+                width: 83.3333333 * SizeConfig.widthMultiplier,
+                child: Lottie.asset("animations/shoppingbag.json"),
+              ),
               RichText(
                   text: TextSpan(
-                      text: 'Piz',
+                      text: 'An',
                       style: TextStyle(
-                          fontSize: 56,
+                          fontSize: 7.2538860 * SizeConfig.textMultiplier,
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
                       children: <TextSpan>[
-                    TextSpan(
-                      text: 'z',
-                      style: TextStyle(
-                          fontSize: 56,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red),
-                    ),
-                    TextSpan(
-                      text: 'ato',
-                      style: TextStyle(
-                          fontSize: 56,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    )
-                  ])),
+                        TextSpan(
+                          text: 'g',
+                          style: TextStyle(
+                              fontSize: 7.2538860 * SizeConfig.textMultiplier,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red),
+                        ),
+                        TextSpan(
+                          text: 'el',
+                          style: TextStyle(
+                              fontSize: 7.2538860 * SizeConfig.textMultiplier,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        )
+                      ])),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -85,7 +92,10 @@ class LoginScreen extends StatelessWidget {
           return new Container(
             height: 400.0,
             width: 400.0,
-            decoration: BoxDecoration(color: Colors.blueGrey.shade700),
+            decoration: BoxDecoration(
+                color: Colors.red.shade400,
+              borderRadius: BorderRadius.circular(25.0)
+            ),
             child: Center(
               child: Column(
                 children: [
@@ -119,22 +129,22 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () =>
                           Provider.of<Authentication>(context, listen: false)
                               .loginIntoAccount(
-                                  emailController.text, passwordController.text)
+                              emailController.text, passwordController.text)
                               .whenComplete(() {
-                        if(Provider.of<Authentication>(context, listen: false).getErrorMessage !=null){
-                          Navigator.pushReplacement(
-                              context,
-                              PageTransition(
-                                  child: HomeScreen(),
-                                  type: PageTransitionType.leftToRightWithFade));
-                        }else{
-                          Navigator.pushReplacement(
-                              context,
-                              PageTransition(
-                                  child: LoginScreen(),
-                                  type: PageTransitionType.leftToRightWithFade));
-                        }
-                      }),
+                            if(Provider.of<Authentication>(context, listen: false).getErrorMessage ==''){
+                              Navigator.pushReplacement(
+                                  context,
+                                  PageTransition(
+                                      child: HomeScreen(),
+                                      type: PageTransitionType.leftToRightWithFade));
+                            }if(Provider.of<Authentication>(context, listen: false).getErrorMessage !=''){
+                              Navigator.pushReplacement(
+                                  context,
+                                  PageTransition(
+                                      child: LoginScreen(),
+                                      type: PageTransitionType.leftToRightWithFade));
+                            }
+                          }),
                       child: Text(
                         "Login",
                         style: TextStyle(color: Colors.black),
@@ -161,7 +171,10 @@ class LoginScreen extends StatelessWidget {
           return new Container(
             height: 400.0,
             width: 400.0,
-            decoration: BoxDecoration(color: Colors.blueGrey.shade700),
+            decoration: BoxDecoration(
+                color: Colors.red.shade400,
+                borderRadius: BorderRadius.circular(25.0)
+            ),
             child: Center(
               child: Column(
                 children: [
@@ -195,7 +208,7 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () =>
                           Provider.of<Authentication>(context, listen: false)
                               .createNewAccount(
-                                  emailController.text, passwordController.text)
+                              emailController.text, passwordController.text)
                               .whenComplete(() {
                             if(Provider.of<Authentication>(context, listen: false).getErrorMessage !=null){
                               Navigator.pushReplacement(
@@ -210,7 +223,7 @@ class LoginScreen extends StatelessWidget {
                                       child: LoginScreen(),
                                       type: PageTransitionType.leftToRightWithFade));
                             }
-                      }),
+                          }),
                       child: Text(
                         "Sign Up",
                         style: TextStyle(color: Colors.black),

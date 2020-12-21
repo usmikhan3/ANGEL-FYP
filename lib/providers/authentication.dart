@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Authentication with ChangeNotifier {
-  dynamic errorMessage;
+  dynamic errorMessage = '';
   dynamic get getErrorMessage =>errorMessage;
   String uid;
   String get getUid => uid;
@@ -11,17 +11,17 @@ class Authentication with ChangeNotifier {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   Future loginIntoAccount(String email, String password) async {
-   try{
-     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    try{
+      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
-     UserCredential userCredential = await firebaseAuth
-         .signInWithEmailAndPassword(email: email, password: password);
-     User user = userCredential.user;
-     uid = user.uid;
-     sharedPreferences.setString('uid', uid);
-     print('This is our uid => $getUid');
-     notifyListeners();
-   }catch(e){
+      UserCredential userCredential = await firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
+      User user = userCredential.user;
+      uid = user.uid;
+      sharedPreferences.setString('uid', uid);
+      print('This is our uid => $getUid');
+      notifyListeners();
+    }catch(e){
       switch(e.code){
         case 'user-not-found':
           errorMessage = 'User Not Found';
@@ -36,7 +36,7 @@ class Authentication with ChangeNotifier {
           print(errorMessage);
           break;
       }
-   }
+    }
   }
 
   Future createNewAccount(String email, String password) async {

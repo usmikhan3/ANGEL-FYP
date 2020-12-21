@@ -19,9 +19,9 @@ class GenerateMaps extends ChangeNotifier {
   Future getCurrentLocation() async {
     var positionData = await GeolocatorPlatform.instance.getCurrentPosition();
     final cords =
-        geoCo.Coordinates(positionData.latitude, positionData.longitude);
+    geoCo.Coordinates(positionData.latitude, positionData.longitude);
     var address =
-        await geoCo.Geocoder.local.findAddressesFromCoordinates(cords);
+    await geoCo.Geocoder.local.findAddressesFromCoordinates(cords);
     String mainAddress = address.first.addressLine;
     print(mainAddress);
     finalAddress = mainAddress;
@@ -47,7 +47,7 @@ class GenerateMaps extends ChangeNotifier {
         onTap: (loc) async {
           final cords = geoCo.Coordinates(loc.latitude, loc.longitude);
           var address =
-              await geoCo.Geocoder.local.findAddressesFromCoordinates(cords);
+          await geoCo.Geocoder.local.findAddressesFromCoordinates(cords);
 
           countryName = address.first.countryName;
           mainAddress = address.first.addressLine;
@@ -63,6 +63,6 @@ class GenerateMaps extends ChangeNotifier {
           notifyListeners();
         },
         initialCameraPosition:
-            CameraPosition(target: LatLng(21.000, 45.000), zoom: 18.0));
+        CameraPosition(target: LatLng(21.000, 45.000), zoom: 18.0));
   }
 }

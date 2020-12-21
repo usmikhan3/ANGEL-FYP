@@ -3,6 +3,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:pizzato/helpers/size_config.dart';
 import 'package:pizzato/main.dart';
 import 'package:pizzato/providers/calculations.dart';
 import 'package:pizzato/screens/cart_screen.dart';
@@ -23,6 +24,7 @@ class _DetailScreenState extends State<DetailScreen> {
   int beaconValue = 0;
   int onionValue = 0;
   int totalItems = 0;
+  int cartData = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +46,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
   Widget appBar(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 50.0),
+      padding: EdgeInsets.only(top: 6.4766839 * SizeConfig.heightMultiplier),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -59,7 +61,7 @@ class _DetailScreenState extends State<DetailScreen> {
               }),
           IconButton(
               icon: Icon(
-                FontAwesomeIcons.trash,
+                FontAwesomeIcons.trashAlt,
                 color: Colors.red,
               ),
               onPressed: () {
@@ -73,7 +75,7 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget pizzaImage() {
     return Center(
       child: SizedBox(
-        height: 280,
+        height: 36.26943 * SizeConfig.heightMultiplier,
         child: Container(
           child: Image.network(widget.queryDocumentSnapshot['image']),
           decoration: BoxDecoration(shape: BoxShape.circle),
@@ -90,13 +92,13 @@ class _DetailScreenState extends State<DetailScreen> {
             Icon(
               Icons.star,
               color: Colors.yellow.shade700,
-              size: 20,
+              size: 2.590673 * SizeConfig.heightMultiplier,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+              padding: EdgeInsets.only(left: 1.0362694 * SizeConfig.widthMultiplier),
               child: Text(
                 widget.queryDocumentSnapshot['rating'],
-                style: TextStyle(fontSize: 20, color: Colors.grey.shade500),
+                style: TextStyle(fontSize: 2.59067357 * SizeConfig.textMultiplier, color: Colors.grey.shade500),
               ),
             )
           ],
@@ -105,10 +107,10 @@ class _DetailScreenState extends State<DetailScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              constraints: BoxConstraints(maxWidth: 300),
+              constraints: BoxConstraints(maxWidth: 83.333333333 * SizeConfig.widthMultiplier),
               child: Text(widget.queryDocumentSnapshot['name'],
                   style: TextStyle(
-                      fontSize: 28,
+                      fontSize: 3.6269430 * SizeConfig.textMultiplier,
                       color: Colors.grey.shade500,
                       fontWeight: FontWeight.w400)),
             ),
@@ -117,14 +119,14 @@ class _DetailScreenState extends State<DetailScreen> {
                 Text(
                   "Rs. ",
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 2.59067357 * SizeConfig.textMultiplier,
                       color: Colors.cyan,
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
                   widget.queryDocumentSnapshot['price'].toString(),
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 2.59067357 * SizeConfig.textMultiplier,
                       color: Colors.cyan,
                       fontWeight: FontWeight.bold),
                 )
@@ -138,13 +140,13 @@ class _DetailScreenState extends State<DetailScreen> {
 
   Widget footerDetails() {
     return SizedBox(
-      height: 300.0,
+      height: 38.8601036 * SizeConfig.heightMultiplier,
       child: Stack(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              height: 300,
+              height: 83.33333333 * SizeConfig.heightMultiplier,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
                   color: Colors.white,
@@ -154,97 +156,99 @@ class _DetailScreenState extends State<DetailScreen> {
                         blurRadius: 5,
                         spreadRadius: 3)
                   ]),
-              width: 400,
+              width: 111.111111 * SizeConfig.widthMultiplier,
               child: Padding(
                 padding:
-                    const EdgeInsets.only(top: 40.0, right: 20.0, left: 20),
+                EdgeInsets.only(top: 5.1813471 * SizeConfig.heightMultiplier, right: 5.555555 * SizeConfig.widthMultiplier, left: 5.555555 * SizeConfig.widthMultiplier),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Add more stuff',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    // Text(
+                    //   '',
+                    //   style: TextStyle(
+                    //       color: Colors.black,
+                    //       fontSize: 3.1088082 * SizeConfig.textMultiplier,
+                    //       fontWeight: FontWeight.bold),
+                    // ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //   children: [
+                    //     Text(
+                    //       "Cheese",
+                    //       style: TextStyle(
+                    //           color: Colors.grey.shade500, fontSize: 2.84974093 * SizeConfig.textMultiplier),
+                    //     ),
+                    //     Row(
+                    //       children: [
+                    //         IconButton(
+                    //             icon: Icon(EvaIcons.minus), onPressed: () {
+                    //           Provider.of<Calculations>(context, listen: false).minusCheese();
+                    //         }),
+                    //         Text(
+                    //           Provider.of<Calculations>(context, listen: true).getCheeseValue.toString(),
+                    //           style: TextStyle(
+                    //               fontSize: 2.590673575 * SizeConfig.textMultiplier, color: Colors.grey.shade500),
+                    //         ),
+                    //         IconButton(
+                    //             icon: Icon(EvaIcons.plus), onPressed: () {
+                    //           Provider.of<Calculations>(context, listen: false).addCheese();
+                    //         }),
+                    //       ],
+                    //     )
+                    //   ],
+                    // ),
+
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //   children: [
+                    //     Text(
+                    //       "Beacon",
+                    //       style: TextStyle(
+                    //           color: Colors.grey.shade500, fontSize: 2.84974093 * SizeConfig.textMultiplier),
+                    //     ),
+                    //     Row(
+                    //       children: [
+                    //         IconButton(
+                    //             icon: Icon(EvaIcons.minus), onPressed: () {
+                    //           Provider.of<Calculations>(context, listen: false).minusBeacon();
+                    //         }),
+                    //         Text(
+                    //           Provider.of<Calculations>(context, listen: true).getBeaconValue.toString(),
+                    //           style: TextStyle(
+                    //               fontSize: 2.59067357512 * SizeConfig.textMultiplier, color: Colors.grey.shade500),
+                    //         ),
+                    //         IconButton(
+                    //             icon: Icon(EvaIcons.plus), onPressed: () {
+                    //           Provider.of<Calculations>(context, listen: false).addBeacon();
+                    //         }),
+                    //       ],
+                    //     )
+                    //   ],
+                    // ),
+                    Flexible(child: Text(widget.queryDocumentSnapshot['description'])),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          "Cheese",
+                          "Quantity",
                           style: TextStyle(
-                              color: Colors.grey.shade500, fontSize: 22),
+                              color: Colors.grey.shade500, fontSize: 2.84974093 * SizeConfig.textMultiplier),
                         ),
                         Row(
                           children: [
                             IconButton(
                                 icon: Icon(EvaIcons.minus), onPressed: () {
-                                  Provider.of<Calculations>(context, listen: false).minusCheese();
+                              Provider.of<Calculations>(context, listen: false).minusQuantity();
                             }),
                             Text(
-                              Provider.of<Calculations>(context, listen: true).getCheeseValue.toString(),
+                              Provider.of<Calculations>(context, listen: true).getQuantity.toString(),
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.grey.shade500),
+                                  fontSize: 2.590673575 * SizeConfig.textMultiplier, color: Colors.grey.shade500),
                             ),
                             IconButton(
                                 icon: Icon(EvaIcons.plus), onPressed: () {
-                              Provider.of<Calculations>(context, listen: false).addCheese();
-                            }),
-                          ],
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "Beacon",
-                          style: TextStyle(
-                              color: Colors.grey.shade500, fontSize: 22),
-                        ),
-                        Row(
-                          children: [
-                            IconButton(
-                                icon: Icon(EvaIcons.minus), onPressed: () {
-                              Provider.of<Calculations>(context, listen: false).minusBeacon();
-                            }),
-                            Text(
-                              Provider.of<Calculations>(context, listen: true).getBeaconValue.toString(),
-                              style: TextStyle(
-                                  fontSize: 20, color: Colors.grey.shade500),
-                            ),
-                            IconButton(
-                                icon: Icon(EvaIcons.plus), onPressed: () {
-                              Provider.of<Calculations>(context, listen: false).addBeacon();
-                            }),
-                          ],
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "Onion",
-                          style: TextStyle(
-                              color: Colors.grey.shade500, fontSize: 22),
-                        ),
-                        Row(
-                          children: [
-                            IconButton(
-                                icon: Icon(EvaIcons.minus), onPressed: () {
-                              Provider.of<Calculations>(context, listen: false).minusOnion();
-                            }),
-                            Text(
-                              Provider.of<Calculations>(context, listen: true).getOnionValue.toString(),
-                              style: TextStyle(
-                                  fontSize: 20, color: Colors.grey.shade500),
-                            ),
-                            IconButton(
-                                icon: Icon(EvaIcons.plus), onPressed: () {
-                              Provider.of<Calculations>(context, listen: false).addOnion();
+                              Provider.of<Calculations>(context, listen: false).addQuantity();
                             }),
                           ],
                         )
@@ -264,16 +268,16 @@ class _DetailScreenState extends State<DetailScreen> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-            color:Provider.of<Calculations>(context, listen: true)
-                .smallTapped ? Colors.red
-                : Colors.white,
+                      color:Provider.of<Calculations>(context, listen: true)
+                          .smallTapped ? Colors.red
+                          : Colors.white,
                       border: Border.all(color: Colors.red),
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'S',
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 2.590673575 * SizeConfig.textMultiplier),
                     ),
                   ),
                 ),
@@ -295,7 +299,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'M',
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 2.590673575 * SizeConfig.textMultiplier),
                     ),
                   ),
                 ),
@@ -313,7 +317,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'L',
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 2.590673575 * SizeConfig.textMultiplier),
                     ),
                   ),
                 ),
@@ -333,19 +337,20 @@ class _DetailScreenState extends State<DetailScreen> {
           onTap: () {
             Provider.of<Calculations>(context, listen: false)
                 .addToCart(context, {
-                  'image':widget.queryDocumentSnapshot['image'],
-                    'name':widget.queryDocumentSnapshot['name'],
+              'image':widget.queryDocumentSnapshot['image'],
+              'name':widget.queryDocumentSnapshot['name'],
               'price':widget.queryDocumentSnapshot['price'],
-              'onion':Provider.of<Calculations>(context, listen: false).getOnionValue,
-              'beacon':Provider.of<Calculations>(context, listen: false).getBeaconValue,
-              'cheese':Provider.of<Calculations>(context, listen: false).getCheeseValue,
+              // 'onion':Provider.of<Calculations>(context, listen: false).getOnionValue,
+              // 'beacon':Provider.of<Calculations>(context, listen: false).getBeaconValue,
+              // 'cheese':Provider.of<Calculations>(context, listen: false).getCheeseValue,
+              'quantity':Provider.of<Calculations>(context, listen: false).getQuantity,
               'size':Provider.of<Calculations>(context, listen: false).getSize
             });
-                
+
           },
           child: Container(
-            width: 250,
-            height: 50,
+            width: 69.4444444 * SizeConfig.widthMultiplier,
+            height: 6.4766839 * SizeConfig.heightMultiplier,
             decoration: BoxDecoration(
                 color: Colors.red.shade500,
                 borderRadius: BorderRadius.circular(50)),
@@ -353,7 +358,7 @@ class _DetailScreenState extends State<DetailScreen> {
               child: Text(
                 'Add To Cart',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 2.590673575 * SizeConfig.textMultiplier,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -363,17 +368,23 @@ class _DetailScreenState extends State<DetailScreen> {
         Stack(
           children: [
             FloatingActionButton(
-              onPressed: () {},
+              onPressed: (){
+                Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                        child: CartScreen(),
+                        type: PageTransitionType.rightToLeftWithFade));
+              },
               child: Icon(
                 Icons.shopping_basket,
                 color: Colors.black,
               ),
             ),
             Positioned(
-                left: 35,
+                left: 9.72222222 * SizeConfig.widthMultiplier,
                 child: CircleAvatar(
                   radius: 10,
-                  child: Text('$totalItems'),
+                  child: Text(Provider.of<Calculations>(context, listen: true).getCartData.toString()),
                 ))
           ],
         )

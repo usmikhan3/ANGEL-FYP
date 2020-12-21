@@ -19,11 +19,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Footers().floatingActionButton(context),
+      drawer: Drawer(
+
+      ),
+        floatingActionButton: Footers().floatingActionButton(context),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left:8.0),
+            padding: const EdgeInsets.only(left:2.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 Headers().appBar(context),
                 Headers().headerText(),
                 Headers().headerMenu(context),
-                Divider(),
                 MiddleHelpers().textFav(),
                 MiddleHelpers().dataFromFav(context, 'favourite'),
                 MiddleHelpers().textBusiness(),

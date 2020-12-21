@@ -4,10 +4,13 @@ import 'package:pizzato/services/manageData.dart';
 import 'package:provider/provider.dart';
 
 class Calculations with ChangeNotifier {
-  int cheeseValue = 0;
-  int beaconValue = 0;
-  int onionValue = 0;
+  // int cheeseValue = 0;
+  // int beaconValue = 0;
+  // int onionValue = 0;
+  int quantity = 0;
   int cartData = 0;
+  int subTotal = 0;
+  //int quantity = 0;
   String size;
 
   bool isSelected = false;
@@ -17,37 +20,49 @@ class Calculations with ChangeNotifier {
 
   bool selected = false;
 
-  int get getCheeseValue => cheeseValue;
-  int get getBeaconValue =>beaconValue;
-  int get getOnionValue =>onionValue;
+  // int get getCheeseValue => cheeseValue;
+  // int get getBeaconValue =>beaconValue;
+  // int get getOnionValue =>onionValue;
+  int get getQuantity => quantity;
   int get getCartData => cartData;
+  int get getSubTotal => subTotal;
   bool get getSelected =>selected;
   String get getSize =>size;
 
-  addCheese(){
-    cheeseValue++;
-    notifyListeners();
-  }
-  addBeacon(){
-    beaconValue++;
+  // addCheese(){
+  //   cheeseValue++;
+  //   notifyListeners();
+  // }
+  // addBeacon(){
+  //   beaconValue++;
+  //   notifyListeners();
+  // }
+  //
+  // addOnion(){
+  //   onionValue++;
+  //   notifyListeners();
+  // }
+
+  // minusOnion(){
+  //   onionValue --;
+  //   notifyListeners();
+  // }
+  // minusCheese(){
+  //   cheeseValue --;
+  //   notifyListeners();
+  // }
+  // minusBeacon(){
+  //   beaconValue --;
+  //   notifyListeners();
+  // }
+
+  addQuantity(){
+    quantity++;
     notifyListeners();
   }
 
-  addOnion(){
-    onionValue++;
-    notifyListeners();
-  }
-
-  minusOnion(){
-    onionValue --;
-    notifyListeners();
-  }
-  minusCheese(){
-    cheeseValue --;
-    notifyListeners();
-  }
-  minusBeacon(){
-    beaconValue --;
+  minusQuantity(){
+    quantity--;
     notifyListeners();
   }
 
@@ -70,14 +85,18 @@ class Calculations with ChangeNotifier {
   }
 
   removeAllData(){
-    cheeseValue = 0;
-    beaconValue =0;
-    onionValue =0;
+    // cheeseValue = 0;
+    // beaconValue =0;
+    // onionValue =0;
+    quantity = 0;
     mediumTapped = false;
     largeTapped = false;
     smallTapped = false;
     notifyListeners();
   }
+
+
+
 
   addToCart(BuildContext context, dynamic data) async{
     if(smallTapped !=false || mediumTapped !=false || largeTapped !=null){
@@ -97,6 +116,8 @@ class Calculations with ChangeNotifier {
           });
     }
   }
+
+
 
 
 }

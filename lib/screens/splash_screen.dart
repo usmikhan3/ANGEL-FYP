@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:pizzato/helpers/size_config.dart';
 import 'package:pizzato/screens/home_screen.dart';
 import 'package:pizzato/screens/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,8 +17,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  
-  Future getUid() async{
+  Future getUid() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     userUid = sharedPreferences.getString('uid');
     print(userUid);
@@ -24,20 +25,18 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    getUid().whenComplete((){
-      Timer(Duration(seconds: 3),
-              ()=>Navigator
-              .pushReplacement(
+    getUid().whenComplete(() {
+      Timer(
+          Duration(seconds: 5),
+              () => Navigator.pushReplacement(
               context,
               PageTransition(
-                  child:userUid == null ? LoginScreen() : HomeScreen(),
-                  type: PageTransitionType.leftToRightWithFade
-              )
-          )
-      );
+                  child: userUid == null ? LoginScreen() : HomeScreen(),
+                  type: PageTransitionType.leftToRightWithFade)));
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,34 +45,44 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 200,
-              width: 400,
-              child: Lottie.asset("animations/slice.json"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                // Container(
+                //   height: 200,
+                //   width: 100,
+                //   child: Lottie.asset("animations/shoppingbag.json"),
+                // ),
+                Container(
+                  height: 38.86010 * SizeConfig.heightMultiplier,
+                  width: 83.3333333 * SizeConfig.widthMultiplier,
+                  child: Lottie.asset("animations/angel.json"),
+                ),
+              ],
             ),
             RichText(
                 text: TextSpan(
-                    text: 'Piz',
+                    text: 'An',
                     style: TextStyle(
-                        fontSize: 56,
+                        fontSize: 7.25388601 * SizeConfig.textMultiplier,
                         fontWeight: FontWeight.bold,
                         color: Colors.black),
                     children: <TextSpan>[
-                  TextSpan(
-                    text: 'z',
-                    style: TextStyle(
-                        fontSize: 56,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red),
-                  ),
-                  TextSpan(
-                    text: 'ato',
-                    style: TextStyle(
-                        fontSize: 56,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  )
-                ]))
+                      TextSpan(
+                        text: 'g',
+                        style: TextStyle(
+                            fontSize: 7.25388601 * SizeConfig.textMultiplier,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red),
+                      ),
+                      TextSpan(
+                        text: 'el',
+                        style: TextStyle(
+                            fontSize: 7.25388601 * SizeConfig.textMultiplier,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      )
+                    ]))
           ],
         ),
       ),

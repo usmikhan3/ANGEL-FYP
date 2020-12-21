@@ -8,13 +8,13 @@ class Footers extends ChangeNotifier{
 
   Widget floatingActionButton(BuildContext context){
     return FloatingActionButton(
-        onPressed: (){
-          Navigator.pushReplacement(
-              context,
-              PageTransition(
-                  child: CartScreen(),
-                  type: PageTransitionType.rightToLeftWithFade));
-        },
+      onPressed: (){
+        Navigator.pushReplacement(
+            context,
+            PageTransition(
+                child: CartScreen(),
+                type: PageTransitionType.rightToLeftWithFade));
+      },
       child: Icon(EvaIcons.shoppingBag),
     );
   }
