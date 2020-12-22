@@ -35,7 +35,7 @@ class Maps extends StatelessWidget {
                 child: IconButton(
                   icon: Icon(
                     Icons.arrow_back_ios,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                   onPressed: (){
                     Navigator.pushReplacement(

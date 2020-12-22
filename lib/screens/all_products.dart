@@ -96,7 +96,7 @@ class _AllProductsState extends State<AllProducts> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      height: 40.860103 * SizeConfig.heightMultiplier,
+                      height: 43.860103 * SizeConfig.heightMultiplier,
                       width: 53.555555 * SizeConfig.widthMultiplier,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(40.0)),
