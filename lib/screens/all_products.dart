@@ -39,33 +39,7 @@ class _AllProductsState extends State<AllProducts> {
   }
 
 
-  Widget appBar(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 6.47668393 * SizeConfig.heightMultiplier),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.black,),
-              onPressed: () {
-                Navigator.pushReplacement(
-                    context,
-                    PageTransition(
-                        child: HomeScreen(),
-                        type: PageTransitionType.rightToLeftWithFade));
-              }),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("All Products"),
-            ],
-          )
 
-        ],
-      ),
-    );
-  }
 
   //TODO:GETTING DATA FROM PRODUCTS COLLECTION FIRESTORE
   Widget dataFromFav(BuildContext context, String collection) {
@@ -87,7 +61,7 @@ class _AllProductsState extends State<AllProducts> {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacement(context, PageTransition(
+                    Navigator.push(context, PageTransition(
                         child: DetailScreen(
                           queryDocumentSnapshot: snapshot.data[index],
                         ),
@@ -113,11 +87,11 @@ class _AllProductsState extends State<AllProducts> {
                         children: [
                           Center(
                             child: SizedBox(
-                              height: 200,
+                              height: 25.906735 * SizeConfig.heightMultiplier,
                               child: Image.network(
                                 snapshot.data[index].data()['image'],
                                 //fit: BoxFit.cover,
-                                width: 300,
+                                width: 83.3333333 * SizeConfig.widthMultiplier,
                                 alignment: Alignment.center,
                               ),
                             ),

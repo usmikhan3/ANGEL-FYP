@@ -15,29 +15,32 @@ class MiddleHelpers extends ChangeNotifier {
   Widget textFav() {
     return Padding(
       padding: EdgeInsets.only(top: 2.5906735 * SizeConfig.heightMultiplier),
-      child: RichText(
-        text: TextSpan(
-            text: 'Favourite ',
-            style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 4.6632124 * SizeConfig.textMultiplier,
-                color: Colors.black,
-                shadows: [BoxShadow(color: Colors.black, blurRadius: 1)]),
-            children: <TextSpan>[
-              TextSpan(
-                text: ' top sellers',
-                style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 2.8497409 * SizeConfig.textMultiplier,
-                    color: Colors.grey,
-                    shadows: [BoxShadow(color: Colors.grey, blurRadius: 0)]),
-              )
-            ]),
+      child: Semantics(
+        label: "Favourite Items",
+        child: RichText(
+          text: TextSpan(
+              text: 'Favourite ',
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 4.6632124 * SizeConfig.textMultiplier,
+                  color: Colors.black,
+                  shadows: [BoxShadow(color: Colors.black, blurRadius: 1)]),
+              children: <TextSpan>[
+                TextSpan(
+                  text: ' top sellers',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 2.8497409 * SizeConfig.textMultiplier,
+                      color: Colors.grey,
+                      shadows: [BoxShadow(color: Colors.grey, blurRadius: 0)]),
+                )
+              ]),
+        ),
       ),
     );
   }
 
-  //TODO:GETTING DATA FROM PRODUCTS COLLECTTION FORESTORE
+  //TODO:GETTING DATA FROM PRODUCTS COLLECTION FIRESTORE
   Widget dataFromFav(BuildContext context, String collection) {
     return Container(
       height: 40.860103 * SizeConfig.heightMultiplier,
@@ -180,24 +183,27 @@ class MiddleHelpers extends ChangeNotifier {
   Widget textBusiness() {
     return Padding(
       padding: EdgeInsets.only(top: 2.590673575 * SizeConfig.heightMultiplier),
-      child: RichText(
-        text: TextSpan(
-            text: 'Discount ',
-            style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 4.66321243 * SizeConfig.textMultiplier,
-                color: Colors.black,
-                shadows: [BoxShadow(color: Colors.black, blurRadius: 1)]),
-            children: <TextSpan>[
-              TextSpan(
-                text: ' upto 50%',
-                style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 2.8497409 * SizeConfig.textMultiplier,
-                    color: Colors.grey,
-                    shadows: [BoxShadow(color: Colors.grey, blurRadius: 0)]),
-              )
-            ]),
+      child: Semantics(
+        label: "Discounted Items up to 50%",
+        child: RichText(
+          text: TextSpan(
+              text: 'Discount ',
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 4.66321243 * SizeConfig.textMultiplier,
+                  color: Colors.black,
+                  shadows: [BoxShadow(color: Colors.black, blurRadius: 1)]),
+              children: <TextSpan>[
+                TextSpan(
+                  text: ' upto 50%',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 2.8497409 * SizeConfig.textMultiplier,
+                      color: Colors.grey,
+                      shadows: [BoxShadow(color: Colors.grey, blurRadius: 0)]),
+                )
+              ]),
+        ),
       ),
     );
   }

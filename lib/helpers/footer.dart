@@ -7,15 +7,19 @@ import 'package:pizzato/screens/cart_screen.dart';
 class Footers extends ChangeNotifier{
 
   Widget floatingActionButton(BuildContext context){
-    return FloatingActionButton(
-      onPressed: (){
-        Navigator.pushReplacement(
-            context,
-            PageTransition(
-                child: CartScreen(),
-                type: PageTransitionType.rightToLeftWithFade));
-      },
-      child: Icon(EvaIcons.shoppingBag),
+    return Semantics(
+      label: "Navigate to Cart",
+      button: true,
+      child: FloatingActionButton(
+        onPressed: (){
+          Navigator.pushReplacement(
+              context,
+              PageTransition(
+                  child: CartScreen(),
+                  type: PageTransitionType.rightToLeftWithFade));
+        },
+        child: Icon(EvaIcons.shoppingBag),
+      ),
     );
   }
 

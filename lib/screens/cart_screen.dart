@@ -67,13 +67,11 @@ class _CartScreenState extends State<CartScreen> {
                 FontAwesomeIcons.trashAlt,
                 color: Colors.red,
               ),
-              onPressed: () async{
-                Provider.of<ManageData>(context, listen: false).deleteData(context);
+              onPressed: () async {
+                Provider.of<ManageData>(context, listen: false)
+                    .deleteData(context);
 
-                Provider.of<Calculations>(context, listen: false).cartData =0;
-
-
-
+                //Provider.of<Calculations>(context, listen: false).cartData = 0;
               })
         ],
       ),
@@ -81,24 +79,37 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   Widget headerText() {
-    return Column(
-      children: [
-        Text(
-          'Your',
-          style: TextStyle(color: Colors.grey, fontSize: 2.33160621 * SizeConfig.heightMultiplier),
-        ),
-        Text(
-          'Cart',
-          style: TextStyle(
-              color: Colors.black, fontSize: 3.88601036 * SizeConfig.heightMultiplier, fontWeight: FontWeight.bold),
-        ),
-      ],
+    return Semantics(
+      label: "YOUR CART ",
+      child: Column(
+        children: [
+          ExcludeSemantics(
+            excluding: true,
+            child: Text(
+              'Your',
+              style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 2.33160621 * SizeConfig.heightMultiplier),
+            ),
+          ),
+          ExcludeSemantics(
+            excluding: true,
+            child: Text(
+              'Cart',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 3.88601036 * SizeConfig.heightMultiplier,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget cartData() {
     return SizedBox(
-      height:37.56476683 * SizeConfig.heightMultiplier,
+      height: 37.56476683 * SizeConfig.heightMultiplier,
       child: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('myOrders').snapshots(),
         builder: (context, snapshot) {
@@ -109,126 +120,94 @@ class _CartScreenState extends State<CartScreen> {
           } else {
             return ListView(
                 children:
-                snapshot.data.docs.map((DocumentSnapshot documentSnapshot) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.shade500,
-                                blurRadius: 5,
-                                spreadRadius: 3
+                    snapshot.data.docs.map((DocumentSnapshot documentSnapshot) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.shade500,
+                            blurRadius: 5,
+                            spreadRadius: 3),
+                      ],
+                      borderRadius: BorderRadius.circular(25)),
+                  height: 25.90673575 * SizeConfig.heightMultiplier,
+                  width: 111.1111111 * SizeConfig.widthMultiplier,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ExcludeSemantics(
+                        excluding: true,
+                        child: SizedBox(
+                          height: 24.61139896 * SizeConfig.heightMultiplier,
+                          width: 41.66666666 * SizeConfig.widthMultiplier,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: 2.22222222 * SizeConfig.widthMultiplier),
+                            child: Image.network(
+                              documentSnapshot.data()['image'],
                             ),
-                          ],
-                          borderRadius: BorderRadius.circular(25)
-                      ),
-
-                      height: 25.90673575 * SizeConfig.heightMultiplier,
-                      width: 111.1111111 * SizeConfig.widthMultiplier,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SizedBox(
-
-                            height: 24.61139896 * SizeConfig.heightMultiplier,
-                            width: 41.66666666 * SizeConfig.widthMultiplier ,
-                            child: Padding(
-                              padding:  EdgeInsets.only(left:2.22222222 * SizeConfig.widthMultiplier),
-                              child: Image.network(documentSnapshot.data()['image'],),
-                            ),
-
-
+                          ),
                         ),
+                      ),
                       Padding(
-                        padding: EdgeInsets.only(left:2.22222222 * SizeConfig.widthMultiplier),
+                        padding: EdgeInsets.only(
+                            left: 2.22222222 * SizeConfig.widthMultiplier),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              documentSnapshot.data()['name'],
-                              style: TextStyle(
-                                  color: Colors.black87,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 2.590673575  * SizeConfig.textMultiplier),
-
+                            Semantics(
+                              label: "${documentSnapshot.data()['name']}",
+                              child: Text(
+                                documentSnapshot.data()['name'],
+                                style: TextStyle(
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 2.590673575 *
+                                        SizeConfig.textMultiplier),
+                              ),
                             ),
-                                Text(
-                                  'Price: \R\s. ${documentSnapshot.data()['price'].toString()}',
+                            Semantics(
+                              label: "${documentSnapshot.data()['price']}",
+                              child: Text(
+                                'Price: \R\s. ${documentSnapshot.data()['price'].toString()}',
+                                style: TextStyle(
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize:
+                                        1.8134715 * SizeConfig.textMultiplier),
+                              ),
+                            ),
+                            Semantics(
+                              label: "${documentSnapshot.data()['quantity']}",
+                              child: Text(
+                                  'Quantity : ${documentSnapshot.data()['quantity'].toString()}',
                                   style: TextStyle(
                                       color: Colors.black87,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 1.8134715 * SizeConfig.textMultiplier),
-                                ),
-                                Text(
-                                  'Quantity : ${documentSnapshot.data()['quantity'].toString()}',style: TextStyle(
-                                  color: Colors.black87,
-
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 1.8134715 * SizeConfig.textMultiplier)
-
-                                ),
-                                // Text(
-                                //   'Onion: \R\s. ${documentSnapshot.data()['onion'].toString()}',
-                                //   style: TextStyle(
-                                //       color: Colors.black87,
-                                //       fontWeight: FontWeight.bold,
-                                //       fontSize: 1.8134715 * SizeConfig.textMultiplier),
-                                // ),
-                                // Text(
-                                //   'Beacon: \R\s. ${documentSnapshot.data()['beacon'].toString()}',
-                                //   style: TextStyle(
-                                //       color: Colors.black87,
-                                //       fontWeight: FontWeight.bold,
-                                //       fontSize: 1.8134715 * SizeConfig.textMultiplier),
-                                // ),
-                                // Text(
-                                //   'Cheese: \R\s. ${documentSnapshot.data()['cheese'].toString()}',
-                                //   style: TextStyle(
-                                //       color: Colors.black87,
-                                //       fontWeight: FontWeight.bold,
-                                //       fontSize: 1.8134715 * SizeConfig.textMultiplier),
-                                //),
-                                CircleAvatar(
-                                  child: Text(documentSnapshot.data()['size'], style: TextStyle(
-                                      color: Colors.white
-                                  ),),
-                                )
-                              ],
-
-//                                   fontWeight: FontWeight.bold,
-//                                   fontSize: 1.8134715 * SizeConfig.textMultiplier),
-//                             ),
-//                             Text(
-//                               'Onion: \R\s. ${documentSnapshot.data()['onion'].toString()}',
-//                               style: TextStyle(
-//                                   color: Colors.black87,
-//                                   fontWeight: FontWeight.bold,
-//                                   fontSize: 1.8134715 * SizeConfig.textMultiplier),
-//                             ),
-//                             Text(
-//                               'Beacon: \R\s. ${documentSnapshot.data()['beacon'].toString()}',
-//                               style: TextStyle(
-//                                   color: Colors.black87,
-//                                   fontWeight: FontWeight.bold,
-//                                   fontSize: 1.8134715 * SizeConfig.textMultiplier),
-//                             ),
-//                             Text(
-//                               'Cheese: \R\s. ${documentSnapshot.data()['cheese'].toString()}',
-//                               style: TextStyle(
-//                                   color: Colors.black87,
-//                                   fontWeight: FontWeight.bold,
-//                                   fontSize: 1.8134715 * SizeConfig.textMultiplier),
-// >>>>>>> 4d8b76ed2594317a0bc20d12fb7589048c931ee0
+                                      fontSize: 1.8134715 *
+                                          SizeConfig.textMultiplier)),
                             ),
-                          )
-                        ],
-                      ),
-                    ),
-                  );
-                }).toList());
+                            CircleAvatar(
+                              child: Semantics(
+                                label: "${documentSnapshot.data()['size']}",
+                                child: Text(
+                                  documentSnapshot.data()['size'],
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            }).toList());
           }
         },
       ),
@@ -240,12 +219,13 @@ class _CartScreenState extends State<CartScreen> {
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(color: Colors.grey.shade500, blurRadius: 5, spreadRadius: 3)
       ], borderRadius: BorderRadius.circular(40.0), color: Colors.white),
-      height:16.8393782 * SizeConfig.heightMultiplier,
+      height: 16.8393782 * SizeConfig.heightMultiplier,
       width: 111.111111 * SizeConfig.widthMultiplier,
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(top: 2.59067357 * SizeConfig.heightMultiplier),
+            padding:
+                EdgeInsets.only(top: 2.59067357 * SizeConfig.heightMultiplier),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -254,20 +234,34 @@ class _CartScreenState extends State<CartScreen> {
                   children: [
                     Icon(FontAwesomeIcons.locationArrow),
                     Padding(
-                      padding:  EdgeInsets.only(left: 2.2222222 * SizeConfig.widthMultiplier),
+                      padding: EdgeInsets.only(
+                          left: 2.2222222 * SizeConfig.widthMultiplier),
                       child: Container(
-                          constraints: BoxConstraints(maxWidth: 69.44444444 * SizeConfig.widthMultiplier),
-                          child: Text(Provider.of<GenerateMaps>(context,listen: true).getMainAddress)),
+                          constraints: BoxConstraints(
+                              maxWidth:
+                                  69.44444444 * SizeConfig.widthMultiplier),
+                          child: Semantics(
+                              label:
+                                  "${Provider.of<GenerateMaps>(context, listen: true).getMainAddress}",
+                              child: Text(Provider.of<GenerateMaps>(context,
+                                      listen: true)
+                                  .getMainAddress))),
                     )
                   ],
                 ),
-                IconButton(icon: Icon(Icons.edit), onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      PageTransition(
-                          child: Maps(),
-                          type: PageTransitionType.bottomToTop));
-                })
+                Semantics(
+                  label: "Mark location on the map to confirm the address",
+                  button: true,
+                  child: IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            PageTransition(
+                                child: Maps(),
+                                type: PageTransitionType.bottomToTop));
+                      }),
+                )
               ],
             ),
           ),
@@ -279,14 +273,15 @@ class _CartScreenState extends State<CartScreen> {
                 children: [
                   Icon(EvaIcons.clock),
                   Padding(
-                    padding:  EdgeInsets.only(left: 2.2222222 * SizeConfig.widthMultiplier),
+                    padding: EdgeInsets.only(
+                        left: 2.2222222 * SizeConfig.widthMultiplier),
                     child: Container(
-                        constraints: BoxConstraints(maxWidth: 69.44444444 * SizeConfig.widthMultiplier),
-                        child: Text("6PM - 8PM")),
+                        constraints: BoxConstraints(
+                            maxWidth: 69.44444444 * SizeConfig.widthMultiplier),
+                        child: Text("Home Delivery 3-4 days")),
                   )
                 ],
               ),
-              IconButton(icon: Icon(Icons.edit), onPressed: () {})
             ],
           )
         ],
@@ -296,7 +291,7 @@ class _CartScreenState extends State<CartScreen> {
 
   Widget billingData() {
     return Padding(
-      padding:  EdgeInsets.only(top: 1.55440414 * SizeConfig.heightMultiplier),
+      padding: EdgeInsets.only(top: 1.55440414 * SizeConfig.heightMultiplier),
       child: Container(
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(color: Colors.grey.shade500, blurRadius: 5, spreadRadius: 3)
@@ -309,17 +304,27 @@ class _CartScreenState extends State<CartScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(
-                  'subtotal: ',
-                  style: TextStyle(fontSize: 2.0725388 * SizeConfig.textMultiplier, color: Colors.grey),
+                Semantics(
+                  label: "SubTotal",
+                  child: Text(
+                    'subtotal: ',
+                    style: TextStyle(
+                        fontSize: 2.0725388 * SizeConfig.textMultiplier,
+                        color: Colors.grey),
+                  ),
                 ),
                 Row(
                   children: [
-                    Text(
-                      "Rs. ",
-                      style: TextStyle(color: Colors.grey, fontSize: 2.0725388 * SizeConfig.textMultiplier),
+                    Semantics(
+                      label: "Rupees",
+                      child: Text(
+                        "Rs. ",
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 2.0725388 * SizeConfig.textMultiplier),
+                      ),
                     ),
-                    Text("300.0",
+                    Text("1350.0",
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 2.0725388 * SizeConfig.textMultiplier,
@@ -331,15 +336,25 @@ class _CartScreenState extends State<CartScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(
-                  'Delivery charges: ',
-                  style: TextStyle(fontSize: 2.0725388 * SizeConfig.textMultiplier, color: Colors.grey),
+                Semantics(
+                  label: "Delivery Charges",
+                  child: Text(
+                    'Delivery charges: ',
+                    style: TextStyle(
+                        fontSize: 2.0725388 * SizeConfig.textMultiplier,
+                        color: Colors.grey),
+                  ),
                 ),
                 Row(
                   children: [
-                    Text(
-                      "Rs. ",
-                      style: TextStyle(color: Colors.grey, fontSize: 2.0725388 * SizeConfig.textMultiplier),
+                    Semantics(
+                      label: "Rupees",
+                      child: Text(
+                        "Rs. ",
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 2.0725388 * SizeConfig.textMultiplier),
+                      ),
                     ),
                     Text("30.0",
                         style: TextStyle(
@@ -351,19 +366,30 @@ class _CartScreenState extends State<CartScreen> {
               ],
             ),
             Padding(
-              padding:  EdgeInsets.only(top: 2.222222 * SizeConfig.widthMultiplier),
+              padding:
+                  EdgeInsets.only(top: 2.222222 * SizeConfig.widthMultiplier),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(
-                    'Total: ',
-                    style: TextStyle(fontSize: 2.3316062 * SizeConfig.textMultiplier, color: Colors.black),
+                  Semantics(
+                    label: "Total",
+                    child: Text(
+                      'Total: ',
+                      style: TextStyle(
+                          fontSize: 2.3316062 * SizeConfig.textMultiplier,
+                          color: Colors.black),
+                    ),
                   ),
                   Row(
                     children: [
-                      Text(
-                        "Rs. ",
-                        style: TextStyle(color: Colors.black, fontSize: 2.0725388 * SizeConfig.textMultiplier),
+                      Semantics(
+                        label: "Rupees",
+                        child: Text(
+                          "Rs. ",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 2.0725388 * SizeConfig.textMultiplier),
+                        ),
                       ),
                       Text("330.00",
                           style: TextStyle(
@@ -389,22 +415,29 @@ class _CartScreenState extends State<CartScreen> {
           onTap: () {
             Provider.of<Authentication>(context, listen: false).getUid == null
                 ? print(' we are getting user id: $userUid')
-                : print(Provider.of<Authentication>(context, listen: false).getUid);
-            Navigator.push(context, PageTransition(child: PaymentMethod(), type: PageTransitionType.fade));
-
+                : print(
+                    Provider.of<Authentication>(context, listen: false).getUid);
+            Navigator.push(
+                context,
+                PageTransition(
+                    child: PaymentMethod(), type: PageTransitionType.fade));
           },
-          child: Container(
-            width: 250,
-            height: 50,
-            decoration: BoxDecoration(
-                color: Colors.red.shade500,
-                borderRadius: BorderRadius.circular(50)),
-            child: Center(
-              child: Text(
-                'Place Order',
-                style: TextStyle(
-                  fontSize: 2.590673575 * SizeConfig.textMultiplier,
-                  fontWeight: FontWeight.w700,
+          child: Semantics(
+            label: "Place your order",
+            button: true,
+            child: Container(
+              width: 69.444444444 * SizeConfig.widthMultiplier,
+              height: 6.4766839378 * SizeConfig.heightMultiplier,
+              decoration: BoxDecoration(
+                  color: Colors.red.shade500,
+                  borderRadius: BorderRadius.circular(50)),
+              child: Center(
+                child: Text(
+                  'Place Order',
+                  style: TextStyle(
+                    fontSize: 2.590673575 * SizeConfig.textMultiplier,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),

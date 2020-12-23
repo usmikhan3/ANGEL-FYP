@@ -17,23 +17,33 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Headers extends ChangeNotifier {
   Widget appBar(BuildContext context) {
-    return AppBar(
-      //backgroundColor: Colors.white,
-      shape: RoundedRectangleBorder(),
-      elevation: 0.0,
-      actions: [
-        IconButton(icon: Icon(EvaIcons.logOutOutline), onPressed: ()async{
-          SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-          sharedPreferences.remove('uid');
-          Navigator.pushReplacement(context, PageTransition
-            (child: LoginScreen(),
-              type: PageTransitionType.leftToRightWithFade));
-        }),
-      ],
-      title: Text(
-        "Home",
-        style: TextStyle(
-            color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),));}
+    return Semantics(
+      label: "Top AppBar of Home Page",
+      child: AppBar(
+        //backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(),
+        elevation: 0.0,
+        actions: [
+          Semantics(
+            label: "Log Out",
+            button: true,
+            child: IconButton(icon: Icon(EvaIcons.logOutOutline), onPressed: ()async{
+              SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+              sharedPreferences.remove('uid');
+              Navigator.pushReplacement(context, PageTransition
+                (child: LoginScreen(),
+                  type: PageTransitionType.leftToRightWithFade));
+            }),
+          ),
+        ],
+        title: Semantics(
+          label: "Home Page",
+          child: Text(
+            "Home",
+            style: TextStyle(
+                color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),),
+        )),
+    );}
 
 //class Headers extends ChangeNotifier{
 
@@ -73,24 +83,27 @@ class Headers extends ChangeNotifier {
   Widget headerText() {
     return Container(
       constraints: BoxConstraints(maxWidth: 293),
-      child: RichText(
-        text: TextSpan(
-            text: 'What would you like ',
-            style: TextStyle(
-                fontWeight: FontWeight.w300,
-                fontSize: 3.756476 * SizeConfig.textMultiplier,
-                color: Colors.black),
-            children: <TextSpan>[
-              TextSpan(
-                text: 'to buy?',
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 4.958549 * SizeConfig.textMultiplier,
-                    color: Colors.black),
-              )
-            ]),
+      child: Semantics(
+        label: "What would you like to eat?`",
+        child: RichText(
+          text: TextSpan(
+              text: 'What would you like ',
+              style: TextStyle(
+                  fontWeight: FontWeight.w300,
+                  fontSize: 3.756476 * SizeConfig.textMultiplier,
+                  color: Colors.black),
+              children: <TextSpan>[
+                TextSpan(
+                  text: 'to buy?',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 4.958549 * SizeConfig.textMultiplier,
+                      color: Colors.black),
+                )
+              ]),
 
 
+        ),
       ),
 
       );
@@ -104,133 +117,156 @@ class Headers extends ChangeNotifier {
 
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            GestureDetector(
+        child: Semantics(
+          label: "Categories Menu",
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              GestureDetector(
 
-              onTap: () {
-                Navigator.push(context, PageTransition(child: AllProducts(), type: PageTransitionType.bottomToTop));
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(color: Colors.redAccent, blurRadius: 10)
-                    ],
-                    borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                    color: Colors.grey.shade100),
-                height: 5.18134715 * SizeConfig.heightMultiplier,
-                width: 27.777777 * SizeConfig.widthMultiplier,
-                child: Center(
-                  child: Text(
-                    'All',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                onTap: () {
+                  Navigator.push(context, PageTransition(child: AllProducts(), type: PageTransitionType.bottomToTop));
+                },
+                child: Semantics(
+                  label: "All Category",
+                  button: true,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(color: Colors.redAccent, blurRadius: 10)
+                        ],
+                        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        color: Colors.grey.shade100),
+                    height: 5.18134715 * SizeConfig.heightMultiplier,
+                    width: 27.777777 * SizeConfig.widthMultiplier,
+                    child: Center(
+                      child: Text(
+                        'All',
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 15,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, PageTransition(child: MenProducts(), type: PageTransitionType.bottomToTop));
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(color: Colors.blue, blurRadius: 10)
-                    ],
-                    borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                    color: Colors.grey.shade100),
-                height: 5.18134715 * SizeConfig.heightMultiplier,
-                width: 27.777777 * SizeConfig.widthMultiplier,
-                child: Center(
-                  child: Text(
-                    'Men',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+              SizedBox(
+                width: 4.166666 * SizeConfig.widthMultiplier,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, PageTransition(child: MenProducts(), type: PageTransitionType.bottomToTop));
+                },
+                child: Semantics(
+                  label: "Men Category",
+                  button: true,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(color: Colors.blue, blurRadius: 10)
+                        ],
+                        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        color: Colors.grey.shade100),
+                    height: 5.18134715 * SizeConfig.heightMultiplier,
+                    width: 27.777777 * SizeConfig.widthMultiplier,
+                    child: Center(
+                      child: Text(
+                        'Men',
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 15,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, PageTransition(child: WomenProducts(), type: PageTransitionType.bottomToTop));
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    boxShadow: [BoxShadow(color: Colors.green, blurRadius: 10)],
-                    borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                    color: Colors.grey.shade100),
-                height: 5.18134715 * SizeConfig.heightMultiplier,
-                width: 27.777777 * SizeConfig.widthMultiplier,
-                child: Center(
-                  child: Text(
-                    'Women',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+              SizedBox(
+                width: 4.166666 * SizeConfig.widthMultiplier,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, PageTransition(child: WomenProducts(), type: PageTransitionType.bottomToTop));
+                },
+                child: Semantics(
+                  label: "Women Category",
+                  button: true,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [BoxShadow(color: Colors.green, blurRadius: 10)],
+                        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        color: Colors.grey.shade100),
+                    height: 5.18134715 * SizeConfig.heightMultiplier,
+                    width: 27.777777 * SizeConfig.widthMultiplier,
+                    child: Center(
+                      child: Text(
+                        'Women',
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 15,
-            ),
+              SizedBox(
+                width: 4.166666 * SizeConfig.widthMultiplier,
+              ),
 
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, PageTransition(child: CasualProducts(), type: PageTransitionType.bottomToTop));
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(color: Colors.yellow, blurRadius: 10)
-                    ],
-                    borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                    color: Colors.grey.shade100),
-                height: 5.18134715 * SizeConfig.heightMultiplier,
-                width: 27.777777 * SizeConfig.widthMultiplier,
-                child: Center(
-                  child: Text(
-                    'Casual',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, PageTransition(child: CasualProducts(), type: PageTransitionType.bottomToTop));
+                },
+                child: Semantics(
+                  label: "Casual category",
+                  button: true,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(color: Colors.yellow, blurRadius: 10)
+                        ],
+                        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        color: Colors.grey.shade100),
+                    height: 5.18134715 * SizeConfig.heightMultiplier,
+                    width: 27.777777 * SizeConfig.widthMultiplier,
+                    child: Center(
+                      child: Text(
+                        'Casual',
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-            width: 15,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, PageTransition(child: ShoesProducts(), type: PageTransitionType.bottomToTop));
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(color: Colors.purple, blurRadius: 10)
-                    ],
-                    borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                    color: Colors.grey.shade100),
-                height: 5.18134715 * SizeConfig.heightMultiplier,
-                width: 27.777777 * SizeConfig.widthMultiplier,
-                child: Center(
-                  child: Text(
-                    'Shoes',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),))
+              SizedBox(
+              width: 4.166666 * SizeConfig.widthMultiplier,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, PageTransition(child: ShoesProducts(), type: PageTransitionType.bottomToTop));
+                },
+                child: Semantics(
+                  label: "Shoes category",
+                  button: true,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(color: Colors.purple, blurRadius: 10)
+                        ],
+                        borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                        color: Colors.grey.shade100),
+                    height: 5.18134715 * SizeConfig.heightMultiplier,
+                    width: 27.777777 * SizeConfig.widthMultiplier,
+                    child: Center(
+                      child: Text(
+                        'Shoes',
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),))
 
 
 
 
 
-              ))],
+                  ),
+                ))],
+          ),
         ),
       ),
     );

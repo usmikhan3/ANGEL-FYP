@@ -30,7 +30,6 @@ class _MenProductsState extends State<MenProducts> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-
             dataFromFav(context, 'men'),
 
           ],
@@ -88,7 +87,7 @@ class _MenProductsState extends State<MenProducts> {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacement(context, PageTransition(
+                    Navigator.push(context, PageTransition(
                         child: DetailScreen(
                           queryDocumentSnapshot: snapshot.data[index],
                         ),
@@ -97,7 +96,7 @@ class _MenProductsState extends State<MenProducts> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      height: 40.860103 * SizeConfig.heightMultiplier,
+                      height: 43.860103 * SizeConfig.heightMultiplier,
                       width: 53.555555 * SizeConfig.widthMultiplier,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -114,11 +113,11 @@ class _MenProductsState extends State<MenProducts> {
                         children: [
                           Center(
                             child: SizedBox(
-                              height: 200,
+                              height: 25.906735 * SizeConfig.heightMultiplier,
                               child: Image.network(
                                 snapshot.data[index].data()['image'],
                                 //fit: BoxFit.cover,
-                                width: 300,
+                                width: 83.3333333 * SizeConfig.widthMultiplier,
                                 alignment: Alignment.center,
                               ),
                             ),
@@ -133,7 +132,16 @@ class _MenProductsState extends State<MenProducts> {
                                   fontSize: 4.33160621 * SizeConfig.textMultiplier),
                             ),
                           ),
-
+                          Padding(
+                            padding: const EdgeInsets.only(top: 4.0),
+                            child: Text(
+                              snapshot.data[index].data()['category'],
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.cyan,
+                                  fontSize: 3.0725388 * SizeConfig.textMultiplier),
+                            ),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(top: 4.0),
                             child: Row(

@@ -55,37 +55,44 @@ class _SplashScreenState extends State<SplashScreen> {
                 //   width: 100,
                 //   child: Lottie.asset("animations/shoppingbag.json"),
                 // ),
-                Container(
-                  height: 38.86010 * SizeConfig.heightMultiplier,
-                  width: 83.3333333 * SizeConfig.widthMultiplier,
-                  child: Lottie.asset("animations/angel.json"),
+                ExcludeSemantics(
+                  excluding: true,
+                  child: Container(
+                    height: 38.86010 * SizeConfig.heightMultiplier,
+                    width: 83.3333333 * SizeConfig.widthMultiplier,
+                    child: Lottie.asset("animations/angel.json"),
+                  ),
                 ),
               ],
             ),
-            RichText(
-                text: TextSpan(
-                    text: 'An',
-                    style: TextStyle(
-                        fontSize: 7.25388601 * SizeConfig.textMultiplier,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                    children: <TextSpan>[
+            Semantics(
+             label: "Angel- Name of the App",
 
-                      TextSpan(
-                        text: 'g',
-                        style: TextStyle(
-                            fontSize: 7.25388601 * SizeConfig.textMultiplier,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red),
-                      ),
-                      TextSpan(
-                        text: 'el',
-                        style: TextStyle(
-                            fontSize: 7.25388601 * SizeConfig.textMultiplier,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      )
-                    ]))
+              child: RichText(
+                  text: TextSpan(
+                      text: 'An',
+                      style: TextStyle(
+                          fontSize: 7.25388601 * SizeConfig.textMultiplier,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                      children: <TextSpan>[
+
+                        TextSpan(
+                          text: 'g',
+                          style: TextStyle(
+                              fontSize: 7.25388601 * SizeConfig.textMultiplier,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red),
+                        ),
+                        TextSpan(
+                          text: 'el',
+                          style: TextStyle(
+                              fontSize: 7.25388601 * SizeConfig.textMultiplier,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        )
+                      ])),
+            )
 
 
 
